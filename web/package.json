@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && rm -rf outhostinger && cp -R out outhostinger",
+    "build": "NEXT_PUBLIC_BUILD_ID=$(date +%s) next build",
     "export": "npm run build",
     "deploy:static": "bash scripts/deploy-static.sh",
     "start": "next start",

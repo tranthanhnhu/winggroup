@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.png",
   },
+  other: {
+    "build-id": process.env.NEXT_PUBLIC_BUILD_ID || "dev",
+  },
 };
 
 export default function RootLayout({

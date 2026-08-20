@@ -9,6 +9,7 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from "react";
 import { company } from "@/data/company";
+import { withBuildId } from "@/lib/buildId";
 
 const slides = [
   {
@@ -90,16 +91,16 @@ export function Hero() {
           {slide.mobileSrc ? (
             <>
               <Image
-                src={slide.mobileSrc}
+                src={withBuildId(slide.mobileSrc)}
                 alt={slide.alt}
                 fill
                 priority={i === 0}
                 sizes="100vw"
                 draggable={false}
-                className="select-none object-contain object-center bg-[#e8f5e4] md:hidden"
+                className="select-none object-cover object-center md:hidden"
               />
               <Image
-                src={slide.src}
+                src={withBuildId(slide.src)}
                 alt={slide.alt}
                 fill
                 sizes="100vw"
@@ -109,7 +110,7 @@ export function Hero() {
             </>
           ) : (
             <Image
-              src={slide.src}
+              src={withBuildId(slide.src)}
               alt={slide.alt}
               fill
               priority={i === 0}

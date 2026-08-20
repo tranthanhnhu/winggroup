@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { company } from "@/data/company";
 import { IconHandshake, IconLeaf, IconPhone } from "@/components/Icons";
+import { withBuildId } from "@/lib/buildId";
 
 /** Rễ AI theo đúng ảnh thiết kế — nền trong suốt */
 function RootDecoration() {
@@ -13,7 +14,7 @@ function RootDecoration() {
       aria-hidden
     >
       <Image
-        src="/images/ui/nav-roots.png"
+        src={withBuildId("/images/ui/nav-roots.png")}
         alt=""
         width={1390}
         height={373}

@@ -1,0 +1,27 @@
+# Hostinger / Apache — chống cache HTML cũ sau mỗi lần deploy
+# File này nằm trong public/ → được copy vào out/ khi next build
+
+<IfModule mod_headers.c>
+  # HTML luôn lấy bản mới
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # Asset có hash / ảnh tĩnh — cache dài
+  <FilesMatch "\.(js|css|woff2|woff|ttf|png|jpg|jpeg|webp|gif|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# Fallback nếu không có mod_headers
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+</IfModule>
