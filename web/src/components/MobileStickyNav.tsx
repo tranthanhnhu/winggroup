@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { company } from "@/data/company";
 import { IconHandshake, IconLeaf, IconPhone } from "@/components/Icons";
 
+/** Rễ AI theo đúng ảnh thiết kế — nền trong suốt */
 function RootDecoration() {
   return (
     <div
@@ -15,9 +15,9 @@ function RootDecoration() {
       <Image
         src="/images/ui/nav-roots.png"
         alt=""
-        width={900}
-        height={280}
-        className="absolute left-1/2 top-[8px] h-[92px] w-[132%] max-w-none -translate-x-1/2 object-contain object-top opacity-95"
+        width={1390}
+        height={373}
+        className="absolute left-1/2 top-[10px] h-[78px] w-[130%] max-w-none -translate-x-1/2 object-contain object-top opacity-[0.85]"
         priority
       />
     </div>
@@ -34,8 +34,6 @@ type NavItem = {
 };
 
 export function MobileStickyNav() {
-  const pathname = usePathname();
-
   const left: NavItem[] = [
     {
       href: company.facebook,
@@ -48,7 +46,7 @@ export function MobileStickyNav() {
       href: "/san-pham",
       label: "Sản phẩm",
       Icon: IconLeaf,
-      circle: "bg-[#ccfbf1] text-[#0f766e]",
+      circle: "bg-[#bbf7d0] text-[#14532d]",
     },
   ];
 
@@ -68,10 +66,9 @@ export function MobileStickyNav() {
     },
   ];
 
-  function renderItem(item: NavItem, active: boolean) {
-    const className = `group flex flex-col items-center gap-1 text-[10px] font-bold ${
-      active ? "text-[var(--color-primary-dark)]" : "text-[#374151]"
-    }`;
+  function renderItem(item: NavItem) {
+    const className =
+      "group flex flex-col items-center gap-1 text-[10px] font-extrabold text-[#1f2937]";
 
     const inner = (
       <>
@@ -116,7 +113,6 @@ export function MobileStickyNav() {
       aria-label="Điều hướng nhanh"
     >
       <div className="relative mx-auto max-w-lg pb-[env(safe-area-inset-bottom)]">
-        {/* Nền trắng kéo full tới đáy (kể cả safe-area) — hết khe trắng */}
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 top-7 bg-white"
           aria-hidden
@@ -132,21 +128,21 @@ export function MobileStickyNav() {
             fill="currentColor"
             d="M0 28 H145 C155 28 162 20 170 12 C182 0 208 0 220 12 C228 20 235 28 245 28 H390 V120 H0 Z"
           />
+          {/* Đỉnh xanh dưới Hotline như mẫu thiết kế */}
+          <path
+            fill="#86efac"
+            d="M145 28 C155 28 162 20 170 12 C182 0 208 0 220 12 C228 20 235 28 245 28 C235 28 228 34 220 40 C208 50 182 50 170 40 C162 34 155 28 145 28 Z"
+          />
         </svg>
 
         <RootDecoration />
 
         <ul className="relative z-[2] grid h-[84px] grid-cols-5 items-end px-3 pb-2.5 pt-3">
-          {left.map((item) => {
-            const active =
-              !item.external &&
-              (pathname === item.href || pathname.startsWith(`${item.href}/`));
-            return (
-              <li key={item.label} className="flex justify-center">
-                {renderItem(item, !!active)}
-              </li>
-            );
-          })}
+          {left.map((item) => (
+            <li key={item.label} className="flex justify-center">
+              {renderItem(item)}
+            </li>
+          ))}
 
           <li className="relative flex h-full justify-center">
             <a
@@ -159,16 +155,11 @@ export function MobileStickyNav() {
             </a>
           </li>
 
-          {right.map((item) => {
-            const active =
-              !item.external &&
-              (pathname === item.href || pathname.startsWith(`${item.href}/`));
-            return (
-              <li key={item.label} className="flex justify-center">
-                {renderItem(item, !!active)}
-              </li>
-            );
-          })}
+          {right.map((item) => (
+            <li key={item.label} className="flex justify-center">
+              {renderItem(item)}
+            </li>
+          ))}
         </ul>
       </div>
     </nav>

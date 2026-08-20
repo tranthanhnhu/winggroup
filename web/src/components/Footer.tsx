@@ -1,10 +1,84 @@
 "use client";
 
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { company } from "@/data/company";
 import { categories } from "@/data/categories";
 import { solutions } from "@/data/solutions";
 import { BrandLogo } from "@/components/BrandLogo";
+
+function IconWheat({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <circle cx="12" cy="12" r="9.2" stroke="currentColor" strokeWidth="1.4" />
+      <path
+        d="M12 17.5V7.2M12 9.2c-1.6-.9-2.8-1-3.6-.7M12 11.4c-1.8-.6-3-.4-3.8.1M12 13.6c-1.6-.4-2.8-.1-3.5.5M12 9.2c1.6-.9 2.8-1 3.6-.7M12 11.4c1.8-.6 3-.4 3.8.1M12 13.6c1.6-.4 2.8-.1 3.5.5"
+        stroke="currentColor"
+        strokeWidth="1.35"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function IconFlask({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M10 3h4M11 3v5.2L7.2 16.2A3.2 3.2 0 0 0 10 21h4a3.2 3.2 0 0 0 2.8-4.8L13 8.2V3"
+        stroke="currentColor"
+        strokeWidth="1.45"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M8.2 14.5h7.6" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconTripleLeaf({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M12 20c0-5.5 2.2-9.5 6.2-12.2-1.2 4.2-3.4 7.2-6.2 9.2Z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 20c0-5.5-2.2-9.5-6.2-12.2 1.2 4.2 3.4 7.2 6.2 9.2Z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 20V8.5C12 5.5 13.2 3.8 15.5 2.8 13.8 5.2 12.8 7.2 12 9.2"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function FooterHeading({
+  children,
+  icon,
+}: {
+  children: ReactNode;
+  icon: ReactNode;
+}) {
+  return (
+    <h3 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[#e8d5a3]">
+      <span>{children}</span>
+      <span className="inline-flex text-[#d4b56a]" aria-hidden>
+        {icon}
+      </span>
+    </h3>
+  );
+}
 
 export function Footer() {
   return (
@@ -34,7 +108,12 @@ export function Footer() {
               { href: company.messenger, src: "/images/social/messenger.png", label: "Messenger" },
               { href: company.tiktok, src: "/images/social/tiktok.png", label: "TikTok" },
               { href: company.zaloUrl, src: "/images/social/zalo.png", label: "Zalo" },
-              { href: `tel:${company.hotline}`, src: "/images/social/phone.png", label: "Gọi điện", blank: false },
+              {
+                href: `tel:${company.hotline}`,
+                src: "/images/social/phone.png",
+                label: "Gọi điện",
+                blank: false,
+              },
             ].map((s) => (
               <a
                 key={s.label}
@@ -52,9 +131,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-white/70">
-            Sản phẩm
-          </h3>
+          <FooterHeading icon={<IconFlask className="h-5 w-5" />}>Sản phẩm</FooterHeading>
           <ul className="space-y-2 text-sm">
             {categories.map((c) => (
               <li key={c.id}>
@@ -67,9 +144,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-white/70">
-            Giải pháp
-          </h3>
+          <FooterHeading icon={<IconWheat className="h-5 w-5" />}>Giải pháp</FooterHeading>
           <ul className="space-y-2 text-sm">
             {solutions.map((s) => (
               <li key={s.slug}>
@@ -97,9 +172,9 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-white/70">
+          <FooterHeading icon={<IconTripleLeaf className="h-5 w-5" />}>
             Đăng ký nhận tin
-          </h3>
+          </FooterHeading>
           <p className="mb-3 text-sm text-white/80">
             Nhận mẹo canh tác và thông tin sản phẩm mới từ Wingroup.
           </p>
