@@ -13,7 +13,7 @@ export const categories: Category[] = [
     "name": "Sản phẩm phục hồi",
     "short": "Phục hồi",
     "description": "Phục hồi cây suy kiệt, kích rễ, bật chồi, xanh lá sau thu hoạch hoặc stress.",
-    "icon": "leaf-refresh",
+    "icon": "refresh-leaf",
     "productCount": 17
   },
   {
@@ -29,7 +29,7 @@ export const categories: Category[] = [
     "name": "Sản phẩm tạo mầm",
     "short": "Tạo mầm",
     "description": "Phân hóa mầm hoa, kích ra hoa đồng loạt, xử lý nghịch vụ.",
-    "icon": "flower",
+    "icon": "sprout",
     "productCount": 7
   },
   {
@@ -37,7 +37,7 @@ export const categories: Category[] = [
     "name": "Dưỡng bông, nuôi trái",
     "short": "Dưỡng bông",
     "description": "Dưỡng bông, tăng đậu trái, lớn trái, hạn chế rụng hoa/trái non.",
-    "icon": "fruit",
+    "icon": "bloom",
     "productCount": 13
   },
   {
@@ -45,7 +45,7 @@ export const categories: Category[] = [
     "name": "Kích rễ, dưỡng rễ",
     "short": "Kích rễ",
     "description": "Hạ phèn, giải độc, siêu ra rễ, dưỡng rễ khỏe.",
-    "icon": "root",
+    "icon": "roots",
     "productCount": 9
   },
   {

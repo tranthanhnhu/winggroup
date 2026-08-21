@@ -10,6 +10,7 @@ import { useBuyCta } from "@/components/BuyCtaSheet";
 import { Button } from "@/components/Button";
 import { BrandLogo } from "@/components/BrandLogo";
 import {
+  IconHandshake,
   IconInfo,
   IconLeaf,
   IconNews,
@@ -27,6 +28,7 @@ const nav = [
   { label: "Dự án", href: "/du-an", Icon: IconProject },
   { label: "Đại lý", href: "/dai-ly", Icon: IconStore },
   { label: "Giới thiệu", href: "/gioi-thieu", Icon: IconInfo },
+  { label: "Giá trị cốt lõi", href: "/gia-tri-cot-loi", Icon: IconHandshake },
   { label: "Liên hệ", href: "/lien-he", Icon: IconPhone },
 ];
 

@@ -24,13 +24,19 @@ export function AboutTeaser() {
               Về chúng tôi
             </p>
             <h2 className="text-3xl font-extrabold text-[var(--color-primary-dark)] md:text-4xl">
-              {company.shortName} — {company.slogan}
+              {company.shortName}
             </h2>
+            <p className="mt-2 text-lg font-semibold text-[var(--color-primary)]">
+              {company.slogan}
+            </p>
             <p className="mt-4 text-[var(--color-text-secondary)]">{company.about}</p>
             <p className="mt-3 text-[var(--color-text-secondary)]">{company.vision}</p>
-            <div className="mt-6">
+            <div className="mt-6 flex flex-wrap gap-3">
               <ButtonLink href="/gioi-thieu" variant="primary">
                 Tìm hiểu thêm
+              </ButtonLink>
+              <ButtonLink href="/gia-tri-cot-loi" variant="secondary">
+                Giá trị cốt lõi
               </ButtonLink>
             </div>
           </div>

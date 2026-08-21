@@ -63,6 +63,20 @@ function IconTripleLeaf({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
+function IconSupport({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <circle cx="12" cy="12" r="8.2" stroke="currentColor" strokeWidth="1.4" />
+      <path
+        d="M9.2 10.2a2.8 2.8 0 0 1 5.6 0c0 1.6-1.2 2.4-2.8 3.2v.8M12 17.2h.01"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 function FooterHeading({
   children,
   icon,
@@ -83,8 +97,8 @@ function FooterHeading({
 export function Footer() {
   return (
     <footer className="border-t border-[var(--color-border)] bg-[var(--color-primary-dark)] text-white">
-      <div className="container grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-4">
-        <div>
+      <div className="container grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-12">
+        <div className="lg:col-span-3">
           <div className="mb-4 inline-flex rounded-xl bg-white px-3 py-2">
             <BrandLogo href="/" size="sm" />
           </div>
@@ -130,20 +144,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div>
+        <div className="lg:col-span-2">
           <FooterHeading icon={<IconFlask className="h-5 w-5" />}>Sản phẩm</FooterHeading>
           <ul className="space-y-2 text-sm">
             {categories.map((c) => (
               <li key={c.id}>
                 <Link href={`/san-pham/${c.id}`} className="hover:underline">
-                  {c.name}
+                  {c.short}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
 
-        <div>
+        <div className="lg:col-span-2">
           <FooterHeading icon={<IconWheat className="h-5 w-5" />}>Giải pháp</FooterHeading>
           <ul className="space-y-2 text-sm">
             {solutions.map((s) => (
@@ -153,6 +167,17 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+          </ul>
+        </div>
+
+        <div className="lg:col-span-2">
+          <FooterHeading icon={<IconSupport className="h-5 w-5" />}>Hỗ trợ</FooterHeading>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link href="/gia-tri-cot-loi" className="hover:underline">
+                Giá trị cốt lõi
+              </Link>
+            </li>
             <li>
               <Link href="/dai-ly" className="hover:underline">
                 Hệ thống đại lý
@@ -168,10 +193,15 @@ export function Footer() {
                 Chính sách đổi trả
               </Link>
             </li>
+            <li>
+              <Link href="/lien-he" className="hover:underline">
+                Liên hệ
+              </Link>
+            </li>
           </ul>
         </div>
 
-        <div>
+        <div className="lg:col-span-3">
           <FooterHeading icon={<IconTripleLeaf className="h-5 w-5" />}>
             Đăng ký nhận tin
           </FooterHeading>
@@ -206,7 +236,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/15 py-4 text-center text-xs text-white/70">
-        © {new Date().getFullYear()} {company.shortName}. Đồng hành cùng phát triển.
+        © {new Date().getFullYear()} {company.shortName}. {company.slogan}
       </div>
     </footer>
   );
